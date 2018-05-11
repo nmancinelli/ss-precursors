@@ -1,10 +1,7 @@
 *.ndk
 .ipynb_checkpoints/
-Untitled.ipynb
 __pycache__/
 bpts_NA.eps
 data/
-errors.csv
-snr.csv
-ss.db
-ssbpts.csv
+*.db
+*.csv
