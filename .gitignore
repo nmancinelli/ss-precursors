@@ -5,3 +5,4 @@ bpts_NA.eps
 data/
 *.db
 *.csv
+*.pickle
