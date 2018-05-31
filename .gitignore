@@ -6,3 +6,6 @@ data/
 *.db
 *.csv
 *.pickle
+perplex/my_project.*
+perplex/my_project_1.*
+.idea
