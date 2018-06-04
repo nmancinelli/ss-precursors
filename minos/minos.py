@@ -58,10 +58,6 @@ class CardFile:
         return self
 
     def set_crustal_region(self, rmin, rmax, vs, vpvs_ratio):
-        #qry = "Radius >= %d AND Radius <= %d " % (rmin * 1000, rmax * 1000)
-        #tmp = self.df.query(qry)
-
-        #self.df[ self.df.Radius >= rmin & self.df.Radius <= rmax ]
 
         self.df.loc[(self.df.Radius >= rmin * 1000.) & (self.df.Radius <= rmax * 1000.), 'Vsv'] = vs
         self.df.loc[(self.df.Radius >= rmin * 1000.) & (self.df.Radius <= rmax * 1000.), 'Vsh'] = vs
