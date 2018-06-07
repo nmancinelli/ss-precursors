@@ -40,3 +40,5 @@ perplex/my_project_1.*
 /default.txt
 .DS_Store
 !/perplex/my_project.dat
+minos/*.out
+minos/*.txt
