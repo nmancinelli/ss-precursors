@@ -4,6 +4,8 @@ from numpy import sqrt
 import subprocess
 from os import chdir, getcwd
 
+workingdir = '/Users/mancinelli/Desktop/SS_Precursors/minos'
+
 
 VpVsRatioDefault=sqrt(3)
 
@@ -34,16 +36,42 @@ def calculate_anis_from_moduli(pvh_ratio, svh_ratio, bulk_modulus, shear_modulus
 
 class Minos:
 
-
     def __init__(self,id="default"):
         self.id = "default"
         self.cwd = getcwd()
-        self.workingdir = '/Users/mancinelli/Desktop/SS_Precursors/minos'
+        self.workingdir = workingdir
         pass
 
     def run(self):
         chdir(self.workingdir)
         subprocess.call('bash run_minos.bash %s' % self.id, shell=True)
+        chdir(self.cwd)
+
+        return self
+
+    def read_output(self):
+        from matplotlib import pylab as plt
+        plt.style.use('ggplot')
+        from numpy import array
+
+        def main():
+            return read_curves('%s.out' % self.id, '-')
+
+        def read_curves(infile, ls='-'):
+            fin = open(infile)
+            a, b, c = [], [], []
+            for line in fin.readlines():
+                nfo = line.strip('\n').split()
+                a.append(float(nfo[0]))
+                b.append(float(nfo[1]))
+                c.append(float(nfo[2]))
+
+            period = 1000. / array(b)
+
+            return period, c
+
+        chdir(self.workingdir)
+        self.period, self.c = main()
         chdir(self.cwd)
 
         return self
@@ -211,7 +239,7 @@ class CardFile:
         plt.legend(loc=3)
         plt.show()
 
-    def write(self,filename='default.txt'):
+    def write(self,filename=workingdir + '/default.txt'):
         fout = open(filename,'w')
 
         fout.write("""# radius [m] density [kg/m^3] vpv [m/s] vsv [m/s] Q kappa Q miu vph [m/s] vsh [m/s] eta [m/s] REF\n""")
