@@ -61,13 +61,13 @@ class Minos:
             a, b, c = [], [], []
             for line in fin.readlines():
                 nfo = line.strip('\n').split()
-                a.append(float(nfo[0]))
-                b.append(float(nfo[1]))
-                c.append(float(nfo[2]))
+                a.append(float(nfo[0])) #phase
+                b.append(float(nfo[1])) #freq
+                c.append(float(nfo[2])) #group
 
             period = 1000. / array(b)
 
-            return period, c
+            return period, a
 
         chdir(self.workingdir)
         self.period, self.c = main()

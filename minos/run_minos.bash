@@ -15,7 +15,7 @@ EOF
 cat out.txt | grep " s " | awk {'print $4,  $5,  $7'} > $file.out
 
 #Clean up
-rm out.txt
+#rm out.txt
 rm $file.tmp
 
 exit
