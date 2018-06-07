@@ -39,3 +39,4 @@ perplex/my_project_1.*
 /crust1/getCN1point
 /default.txt
 .DS_Store
+!/perplex/my_project.dat
