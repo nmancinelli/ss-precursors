@@ -14,7 +14,7 @@ class Geotherm:
 
         self.q0 = q0
         self.rhoH = rhoH
-        self.rhoH = rhoH_se
+        self.rhoH_se = rhoH_se
         self.alpha = alpha
         self.Tp = Tp
         self.g = g

@@ -37,10 +37,9 @@ def calculate_anis_from_moduli(pvh_ratio, svh_ratio, bulk_modulus, shear_modulus
 class Minos:
 
     def __init__(self,id="default"):
-        self.id = "default"
+        self.id  = id
         self.cwd = getcwd()
         self.workingdir = workingdir
-        pass
 
     def run(self):
         chdir(self.workingdir)
@@ -243,7 +242,7 @@ class CardFile:
         fout = open(filename,'w')
 
         fout.write("""# radius [m] density [kg/m^3] vpv [m/s] vsv [m/s] Q kappa Q miu vph [m/s] vsh [m/s] eta [m/s] REF\n""")
-        fout.write("""1 1. 1 1\n720  180  358  717  739\n""")
+        fout.write("""1 -1. 1 1\n720  180  358  717  739\n""")
 
         for irow, row in self.df.iterrows():
             line = "%7.0f. %8.2f %8.2f %8.2f %8.1f %8.1f %8.2f %8.2f %8.5f\n" %\
