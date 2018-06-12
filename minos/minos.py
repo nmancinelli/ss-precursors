@@ -159,17 +159,30 @@ class CardFile:
 
     def set_crustal_region(self, crustal_model):
 
-        rearth = 6371000.
-        rmoho = rearth - abs(crustal_model.loc[7, "Bottom"]) * 1000.
+        rearth0 = 6371000.
+
+        rearth = rearth0 + crustal_model.loc[0,"Bottom"] * 1000.0
+        rmoho = rearth0 - abs(crustal_model.loc[7, "Bottom"]) * 1000.
         cf1 = self.df.query("Radius < %d" % (rmoho))
         ii = len(cf1) - 1
 
-        for iclay in range(3):
-            rmoho = 6371000. - abs(crustal_model.loc[7 - iclay, "Bottom"]) * 1000.
+        crustal_model = crustal_model.query("Density > 0.01")
+
+        inds = crustal_model.index.tolist()[::-1]
+
+        for kk,iclay in enumerate(inds[:-2]):
+            rmoho = rearth0 - abs(crustal_model.loc[iclay, "Bottom"]) * 1000.
+            if crustal_model.loc[iclay, "Density"] == 0:
+                continue
             for iknot in [1, 0]:
                 ii += 1
-                jj = 7 - iclay + iknot
-                if jj < 8:
+
+                if iknot == 0:
+                    jj = inds[kk]
+                else:
+                    jj = inds[kk-1]
+
+                if jj > 0:
                     rho = crustal_model.loc[jj, "Density"] * 1000.
                     vp = crustal_model.loc[jj, "Vp"] * 1000.
                     vs = crustal_model.loc[jj, "Vs"] * 1000.
@@ -238,11 +251,11 @@ class CardFile:
         plt.legend(loc=3)
         plt.show()
 
-    def write(self,filename=workingdir + '/default.txt'):
+    def write(self, ref_period=-1.0, filename=workingdir + '/default.txt', ):
         fout = open(filename,'w')
 
         fout.write("""# radius [m] density [kg/m^3] vpv [m/s] vsv [m/s] Q kappa Q miu vph [m/s] vsh [m/s] eta [m/s] REF\n""")
-        fout.write("""1 -1. 1 1\n720  180  358  717  739\n""")
+        fout.write("""1 %.1f 1 1\n722  180  358  717  739\n""" % ref_period)
 
         for irow, row in self.df.iterrows():
             line = "%7.0f. %8.2f %8.2f %8.2f %8.1f %8.1f %8.2f %8.2f %8.5f\n" %\
