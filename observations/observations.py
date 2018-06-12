@@ -43,7 +43,7 @@ class PhaseVelocities:
 
         chdir('%s/ma/rayleigh' % path)
         call('bash get.bash %f %f' % (self.lat, self.lon), shell=True)
-        chdir('../..')
+        chdir('%s/..' % path)
 
         df = pd.read_csv('%s/ma/rayleigh/point.1' % path, names = ['freq_mHz','v1','v2'], delim_whitespace=True)
 
