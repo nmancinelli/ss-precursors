@@ -1,4 +1,4 @@
-hp02ver.dat     thermodynamic data file
+sfo05ver.dat     thermodynamic data file
 no_print | print generates print output
 plot     | no_plot suppresses plot output
                                              | solution model file, blank = none                                                                                                                                                                                
