@@ -197,6 +197,25 @@ class CardFile:
 
         return self
 
+    def set_crustal_region_shen(self, crustal_model, zmoho_in_km):
+
+        rearth0 = 6371000.
+        rmoho = rearth0 - zmoho_in_km*1000.
+
+        cf1    = self.df.query("Radius < %d" % (rmoho))
+        ii     = len(cf1) - 1
+
+        crustal_model = crustal_model.query("Depth < %f" % zmoho_in_km).sort_values('Depth', ascending=False)
+
+        for jj, row in crustal_model.iterrows():
+            ii += 1
+            radius = rearth0 - row.Depth*1000.0
+            cf1.loc[ii] = [radius, row.Rho*1000., row.Vp*1000., row.Vs*1000., 99999., 99999., row.Vp*1000., row.Vs*1000., 1., 1., 1.]
+
+        self.df = cf1
+
+        return self
+
     def set_mantle_region(self, vp_fun, vs_fun, rho_fun, zmax=350, zmoho=35.):
         for ii,row in self.df.iterrows():
             z = 6371. - row["Radius"]/1000.0
@@ -269,8 +288,10 @@ class CardFile:
     def write(self, ref_period=-1.0, filename=workingdir + '/default.txt', ):
         fout = open(filename,'w')
 
+        nknots = len(self.df.Radius.tolist())
+
         fout.write("""# radius [m] density [kg/m^3] vpv [m/s] vsv [m/s] Q kappa Q miu vph [m/s] vsh [m/s] eta [m/s] REF\n""")
-        fout.write("""1 %.1f 1 1\n722  180  358  717  739\n""" % ref_period)
+        fout.write("""1 %.1f 1 1\n%d  180  358  717  739\n""" % (ref_period, nknots) )
 
         for irow, row in self.df.iterrows():
             line = "%7.0f. %8.2f %8.2f %8.2f %8.1f %8.1f %8.2f %8.2f %8.5f\n" %\
