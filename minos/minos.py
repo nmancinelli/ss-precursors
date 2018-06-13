@@ -233,6 +233,21 @@ class CardFile:
 
         return self
 
+    def set_mantle_attenuation(self, qmu_fun, zmax=350, zmoho=35.):
+        for ii,row in self.df.iterrows():
+            z = 6371. - row["Radius"]/1000.0
+            if z > zmax or z < zmoho:
+                continue
+
+            qmu = qmu_fun(z)
+            if qmu > 999999.:
+                qmu = 999999.
+
+            self.df.loc[ii, 'Qmu']    = qmu
+            self.df.loc[ii, 'Qkappa'] = 999999.
+
+        return self
+
     def plot(self, rmin = 0):
         from matplotlib import pylab as plt
         plt.style.use('ggplot')
