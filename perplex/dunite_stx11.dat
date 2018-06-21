@@ -1,7 +1,7 @@
-sfo05ver.dat     thermodynamic data file
+stx11ver.dat     thermodynamic data file
 no_print | print generates print output
 plot     | no_plot suppresses plot output
-                                             | solution model file, blank = none                                                                                                                                                                                
+stx11_solution_model.dat                 | solution model file, blank = none
 Title Text                                                                                                                                                                                                                                                      
 perplex_option.dat     | Perple_X option file                                                                                                                                                                                                                   
     5 calculation type: 0 - composition, 1 - Schreinemakers, 3 - Mixed, 4 - swash, 5 - gridded min, 7 - 1d fract, 8 - gwash, 9 - 2d fract, 10 - 7 w/file input
@@ -12,8 +12,8 @@ perplex_option.dat     | Perple_X option file
     0 console messages, 0 - yes, 1 - suppress most
     1 short print file, 0 - no, 1 - yes
     1 for gridded minimization grid refinement, 1 - true boundaries, 0 - all boundaries
-  100 for gridded minimization JLOW, number of Y-nodes at lowest level
-   10 for gridded minimization JLEV, number of grid levels
+   10 for gridded minimization JLOW, number of Y-nodes at lowest level
+    4 for gridded minimization JLEV, number of grid levels
     0 number component transformations
     8 number of components
     1 component amounts, 0 - molar, 1 weight
@@ -21,15 +21,17 @@ perplex_option.dat     | Perple_X option file
     0 variance flag, 0 - calculate all, 1 - only true univariants
     1 IDBASE data base code
     0 ifug EoS for saturated phase
-  100 for gridded minimization ILOW, number of X-nodes at lowest level
+   10 for gridded minimization ILOW, number of X-nodes at lowest level
     0 special dependencies: 0 - P and T independent, 1 - P(T), 2 - T(P)
  0.00000      0.00000      0.00000      0.00000      0.00000     Geothermal gradient polynomial coeffs.
 
 begin thermodynamic component list
-MGO   1  38.8200      0.00000      0.00000     weight amount
-SIO2  1  44.9300      0.00000      0.00000     weigth amount
-FEO   1   8.5600      0.00000      0.00000     weight amount
-CAO   1   3.1900      0.00000      0.00000     weight amount
+MGO   1 49.20         0.00000      0.00000     weight  amount
+AL2O3 1 0.30          0.00000      0.00000     weight  amount
+SIO2  1 42.90         0.00000      0.00000     weight  amount
+FEO   1 6.50          0.00000      0.00000     weight  amount
+CAO   1 0.10          0.00000      0.00000     weight  amount
+NA2O  1 0.10          0.00000      0.00000     weight  amount
 end thermodynamic component list
 
 
@@ -50,6 +52,13 @@ end excluded phase list
 
 
 begin solution phase list
+O
+Opx
+Cpx
+Sp
+Gt
+Ring
+Wad
 end solution phase list
 
 0.15000E+06  2200.0     0.00000000  0.0000      0.0000     max p, t, xco2, u1, u2
