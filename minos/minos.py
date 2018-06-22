@@ -3,6 +3,7 @@
 from numpy import sqrt
 import subprocess
 from os import chdir, getcwd
+import pickle as pickle
 
 workingdir = '/Users/mancinelli/Desktop/SS_Precursors/minos'
 
@@ -36,10 +37,11 @@ def calculate_anis_from_moduli(pvh_ratio, svh_ratio, bulk_modulus, shear_modulus
 
 class Minos:
 
-    def __init__(self,id="default"):
+    def __init__(self,id="default", cardfile = None):
         self.id  = id
         self.cwd = getcwd()
         self.workingdir = workingdir
+        self.cardfile = cardfile
 
     def run(self):
         chdir(self.workingdir)
@@ -110,6 +112,17 @@ class Minos:
         main()
         chdir(self.cwd)
 
+    def save(self,filename='minos.pickle'):
+        fout=open(filename,'wb')
+        pickle.dump(self, fout)
+        fout.close()
+        return
+
+    def load(self,filename='minos.pickle'):
+        fin=open(filename,'rb')
+        self = pickle.load(fin)
+        fin.close()
+        return self
 
 class CardFile:
     def __init__(self, name='default'):
