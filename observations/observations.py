@@ -1,6 +1,7 @@
 #!/usr/bin
 #
 import pandas as pd
+from numpy import mean, std
 
 path = '/Users/mancinelli/Desktop/SS_Precursors/observations/'
 
@@ -55,6 +56,29 @@ class PhaseVelocities:
             self.measurements[row.Period] = row.v1*1000.
 
         return self
+
+class Region:
+    def __init__(self,lat1,lat2,lon1,lon2):
+        self.lats = range(lat1,lat2+1)
+        self.lons = range(lon1,lon2+1)
+        self.pvs  = {}
+
+        for lat in self.lats:
+            for lon in self.lons:
+                pv = PhaseVelocities(lat,lon)
+                self.pvs[lat,lon] = pv
+
+        periods = self.pvs[lat1,lon1].measurements.keys()
+        self.mean, self.std = {},{}
+
+        for period in periods:
+            pvlist = []
+            for _, pv in self.pvs.items():
+                pvlist.append(pv.measurements[period])
+
+            self.mean[period] = mean(pvlist)
+            self.std[period]  = std(pvlist)
+
 
 if __name__ == "__main__":
     pv = PhaseVelocities(36,-110, "Ma")
