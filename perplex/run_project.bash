@@ -31,6 +31,30 @@ y
 100 100
 0
 !
+#
+src/werami << ! > werami.out
+$dat_file
+2
+25
+n
+y
+10  150000
+800 2200
+100 100
+0
+!
+
+src/werami << ! > werami.out
+$dat_file
+2
+36
+3
+y
+10  150000
+800 2200
+100 100
+0
+!
 
 python ../make_funs.py
 

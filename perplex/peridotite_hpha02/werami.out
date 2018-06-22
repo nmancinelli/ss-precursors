@@ -18,7 +18,7 @@ Perple_X computational option settings for WERAMI:
     aqeuous_species         20        [20] 0-100
     aq_solvent_composition y          [y] m: y => mol fraction, m => molality
     aq_solute_composition  m          y [m]: y => mol fraction, m => molality
-    spreadsheet            F          [F] T
+    spreadsheet            T          [F] T
     logarithmic_p          F          [F] T
     bad_number             NaN        [0.0]
     composition_constant   F          [F] T
@@ -108,17 +108,14 @@ Select a property [enter 0 to finish]:
    39 - Heat capacity ratio (Cp/Cv)                                 
    40 - Lagged or back-calculated aqueous solute chemistry          
 
-Calculate individual phase properties (y/n)?
+In this mode you may tabulate:
+    1 - properties of the system
+    2 - properties of a phase
+    3 - properties of the system and its phases
+Output for option 1 & 2 can be plotted with PSPLOT, PYWERAMI or MatLab.
+Output for option 3 can only be plotted with PHEMGP.
 
-Select a property [enter 0 to finish]:
-
-Calculate individual phase properties (y/n)?
-
-Select a property [enter 0 to finish]:
-
-Calculate individual phase properties (y/n)?
-
-Select a property [enter 0 to finish]:
+Select an option [default = 1]:
 
 Change default variable range (y/n)?
 
@@ -132,21 +129,19 @@ Enter number of nodes in the P(bar)   and T(K)     directions:
 
 Data ranges excluding values equal to bad_number (       NaN) specified in perplex_option.dat:
 
-     rho,kg/m3      vp,km/s        vs,km/s       
-min    2697.70        3.03359       0.585313E-010
-max    3740.41        9.39563        5.27267     
+     V,J/bar/mol    H,J/mol        Gruneisen_T    Ks,bar         Gs,bar         v0,km/s        vp,km/s        vs,km/s        vp/vs          rho,kg/m3      G,J/mol        cp,J/K/mol     alpha,1/K      beta,1/bar     S,J/K/mol      n,mol          N,g            Ks_{T},bar/K   Gs_{T},bar/K   Ks_{P}         Gs_P           v0_{T}         vp_{T}         vs_{T}         v0_{P}         vp_P           vs_{P}         cp/cv          vol,%          wt,%           mol,%          MGO,wt%        AL2O3,wt%      SIO2,wt%       TIO2,wt%       MNO,wt%        FEO,wt%        CAO,wt%        NA2O,wt%       mu[MGO],J/mol  mu[AL2O3],J/mo mu[SIO2],J/mol mu[TIO2],J/mol mu[MNO],J/mol  mu[FEO],J/mol  mu[CAO],J/mol  mu[NA2O],J/mol nom_ox        
+min    1.34689      -0.526547E+007  0.335804E-001   144672.       0.100000E-015   2.19995        2.19995       0.435848E-010   1.66227        2312.37      -0.702613E+007   66.2078       0.222556E-005  0.283920E-006   78.8824       0.105071E-004   60.0840       -457.302       -379.647        3.62570        0.00000      -0.105488E-002 -0.246267E-002 -0.461789E-002  0.363356E-005  0.403074E-005 -0.218267E-015   1.00015       0.362618E-002  0.275518E-002  0.176832E-002   0.00000        0.00000        0.00000        0.00000        0.00000        0.00000        0.00000        0.00000        0.00000        0.00000        0.00000        0.00000        0.00000        0.00000        0.00000        0.00000       0.100000E+100
+max    11.8479       -226444.        1.60701       0.353907E+007  0.234967E+007   8.90699        12.2296        7.25754       0.970573E+011   5264.18       -637506.        555.149       0.192341E-003  0.698712E-005   1229.95       0.641606        459.696       -29.5188        0.00000        6.60000        4.43772       0.166780E-003 -0.416901E-004  0.308543E-014  0.239177E-004  0.379210E-004  0.526475E-004   1.30410        100.000        100.000        100.000        38.8257        4.37015        44.9315        0.00000        0.00000        8.58308        3.19011       0.500000        0.00000        0.00000        0.00000        0.00000        0.00000        0.00000        0.00000        0.00000      -0.100000E+100
 
-Output has been written to the 2d tab format file: peridotite_hpha02_1.tab                                                                             
+Output has been written to the 2d phm format file: peridotite_hpha02_2.phm                                                                             
 
-2d tab format files can be processed with:
+2d phm format files can be processed with:
 
-     PSTABLE - a Perple_X plotting program
-     PERPLE_X_PLOT - a MATLAB plotting script
-     PYWERAMI - petrol.natur.cuni.cz/~ondro/pywerami:home
+     PHEMGP - perplex.ethz.ch/phemgp
      spread-sheet programs, e.g., EXCEL
 
-for details on tab format refer to:
-     perplex.ethz.ch/faq/perple_x_tab_file_format.txt
+for details on phm format refer to:
+     perplex.ethz.ch/faq/perple_x_phm_file_format.txt
 
 Select operational mode:
     1 - properties at specified conditions

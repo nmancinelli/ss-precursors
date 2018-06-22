@@ -18,7 +18,7 @@ Perple_X computational option settings for WERAMI:
     aqeuous_species         20        [20] 0-100
     aq_solvent_composition y          [y] m: y => mol fraction, m => molality
     aq_solute_composition  m          y [m]: y => mol fraction, m => molality
-    spreadsheet            F          [F] T
+    spreadsheet            T          [F] T
     logarithmic_p          F          [F] T
     bad_number             NaN        [0.0]
     composition_constant   F          [F] T
@@ -108,17 +108,8 @@ Select a property [enter 0 to finish]:
    39 - Heat capacity ratio (Cp/Cv)                                 
    40 - Lagged or back-calculated aqueous solute chemistry          
 
-Calculate individual phase properties (y/n)?
-
-Select a property [enter 0 to finish]:
-
-Calculate individual phase properties (y/n)?
-
-Select a property [enter 0 to finish]:
-
-Calculate individual phase properties (y/n)?
-
-Select a property [enter 0 to finish]:
+Output cumulative modes (y/n)?
+(see www.perplex.ethz.ch/perplex_options.html#cumulative_modes)
 
 Change default variable range (y/n)?
 
@@ -132,11 +123,11 @@ Enter number of nodes in the P(bar)   and T(K)     directions:
 
 Data ranges excluding values equal to bad_number (       NaN) specified in perplex_option.dat:
 
-     rho,kg/m3      vp,km/s        vs,km/s       
-min    2720.79        3.26463       0.273983     
-max    3659.61        9.31700        5.22681     
+     Opx(HP)        Pl(h)          O(HP)          di             ru             sph            abL            diL            enL            anL            foGL           Sp(JR)         usp            faL            faGL           jd             Gt(HP)         ilm            ne             geik           ilm_nol        stv            ab            
+min    1.72629       0.397703E-001  0.335133       0.760651E-001  0.713664E-002  0.222321E-001  0.152570E-001  0.112420       0.966944       0.236619       0.175368E-001  0.729694E-003  0.175195E-001   2.81864       0.132828       0.632824       0.490448E-003  0.125667E-001  0.294806       0.129185E-001  0.133947E-001  0.689933        1.06540     
+max    10.7588        1.44449        96.3663       0.392835       0.805341E-002  0.235112E-001   1.13230       0.463771        10.6730       0.425666        82.2948       0.167054       0.189454E-001   6.86666        6.72152       0.672074       0.543315       0.136326E-001  0.583148       0.137233E-001  0.136209E-001   2.35301        1.06541     
 
-Output has been written to the 2d tab format file: dunite_hpha02_1.tab                                                                                 
+Output has been written to the 2d tab format file: dunite_hpha02_2.tab                                                                                 
 
 2d tab format files can be processed with:
 

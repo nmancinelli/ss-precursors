@@ -58,14 +58,14 @@ class PhaseVelocities:
         return self
 
 class Region:
-    def __init__(self,lat1,lat2,lon1,lon2):
+    def __init__(self,lat1,lat2,lon1,lon2,source):
         self.lats = range(lat1,lat2+1)
         self.lons = range(lon1,lon2+1)
         self.pvs  = {}
 
         for lat in self.lats:
             for lon in self.lons:
-                pv = PhaseVelocities(lat,lon)
+                pv = PhaseVelocities(lat, lon, source=source)
                 self.pvs[lat,lon] = pv
 
         periods = self.pvs[lat1,lon1].measurements.keys()

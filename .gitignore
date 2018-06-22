@@ -42,3 +42,4 @@ perplex/my_project_1.*
 !/perplex/my_project.dat
 minos/*.out
 minos/*.txt
+/observations/ma/rayleigh/point.1

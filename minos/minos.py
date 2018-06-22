@@ -223,7 +223,7 @@ class CardFile:
         for jj, row in crustal_model.iterrows():
             ii += 1
             radius = rearth0 - row.Depth*1000.0
-            cf1.loc[ii] = [radius, row.Rho*1000., row.Vp*1000., row.Vs*1000., 99999., 99999., row.Vp*1000., row.Vs*1000., 1., 1., 1.]
+            cf1.loc[ii] = [radius, row.Rho*1000., row.Vp*1000., row.Vs*1000., 99999., 300., row.Vp*1000., row.Vs*1000., 1., 1., 1.]
 
         self.df = cf1
 
