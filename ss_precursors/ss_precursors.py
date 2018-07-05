@@ -2,18 +2,20 @@
 import pickle
 
 class Stack:
+    def read(filename):
+        fin = open(filename,'rb')
+        stk = pickle.load(fin)
+        return stk
+    
     def __init__(self):
         self.amplitude = []
         self.standard_error = []
+        self.depths = []
         self.metadata = {}
 
     def save(self,filename):
         fout = open(filename,'wb')
         pickle.dump(self, fout)
-
-    def read(self, filename):
-        fin = open(filename,'rb')
-        return pickle.load(fin)
 
     def print(self):
         print('Amps: ',self.amplitude)

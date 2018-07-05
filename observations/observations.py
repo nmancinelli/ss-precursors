@@ -19,7 +19,8 @@ class PhaseVelocities:
 
     def get_velocities_cloud(self):
 
-        for ii, period in enumerate([25,40,50,60,80,100,120,140, 180]):
+        #for ii, period in enumerate([25,40,50,60,80,100,120,140, 180]):
+        for ii, period in enumerate([40, 50, 60, 80, 100, 120, 140]):
 
             if period >= 120:
                 filt=500
@@ -42,13 +43,18 @@ class PhaseVelocities:
         from subprocess import call
         from os import chdir
 
+        import os
+        cwd = os.getcwd()
+
         chdir('%s/ma/rayleigh' % path)
         call('bash get.bash %f %f' % (self.lat, self.lon), shell=True)
-        chdir('%s/..' % path)
+        chdir('%s' % cwd)
 
         df = pd.read_csv('%s/ma/rayleigh/point.1' % path, names = ['freq_mHz','v1','v2'], delim_whitespace=True)
 
         df["Period"] = (df.freq_mHz / 1000.)**-1
+
+        df = df.query("Period >=40 and Period < 190")
 
         for _, row in df.iterrows():
             if row.v1 < 0.0:
@@ -56,6 +62,31 @@ class PhaseVelocities:
             self.measurements[row.Period] = row.v1*1000.
 
         return self
+
+    def compute_perturbations(self, reference_model_file):
+        import sys
+        sys.path.append('/Users/mancinelli/Desktop/SS_Precursors/')
+        from minos.minos import Minos
+        from scipy.interpolate import interp1d
+
+
+
+        path2file = '/Users/mancinelli/Desktop/SS_Precursors/' + reference_model_file
+        m = Minos().load(filename=path2file)
+
+        fun = interp1d(m.period, m.c)
+
+        self.perturbations = {}
+
+        for period in self.measurements:
+            c  = self.measurements[period]
+            c0 = fun(period)*1000.  # convert to m/s
+
+            dc_c = (c-c0) / c0
+            self.perturbations[period] = dc_c
+
+        return self
+
 
 class Region:
     def __init__(self,lat1,lat2,lon1,lon2,source):
@@ -82,4 +113,4 @@ class Region:
 
 if __name__ == "__main__":
     pv = PhaseVelocities(36,-110, "Ma")
-    print(pv.measurements)
+    print(pv.measurements.keys())
