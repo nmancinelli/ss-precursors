@@ -149,7 +149,7 @@ Here we plan to present an integrative perspective on cratonic temperature and c
 \begin{column}{\onecolwid}\vspace{-.6in} % The first column within column 2 (column 2.1)
 
 %----------------------------------------------------------------------------------------
-%	MATERIALS
+%	XENOLITH THERMOBAROMETRY
 %----------------------------------------------------------------------------------------
 
 \begin{block}{Geotherm Constraints from Xenoliths}
@@ -161,14 +161,9 @@ Here we plan to present an integrative perspective on cratonic temperature and c
 \item Discuss assumptions
 
 \begin{figure}
-\includegraphics{img2/ColoradoPlateau_geotherm.eps}
-\caption{Colorado Plateau}
-\end{figure}
-
-
-\begin{figure}
-\includegraphics{img2/SlaveCraton_geotherm.eps}
-\caption{Slave Craton}
+\includegraphics[width=0.5\textwidth]{img2/ColoradoPlateau_geotherm.eps}
+\includegraphics[width=0.5\textwidth]{img2/SlaveCraton_geotherm.eps}
+\caption{Constraints on geotherms from xenolith thermobarometry.}
 \end{figure}
 
 \item Strong tradeoff between crustal heat production and surface heat-flow.  Solved by pegging heat-flow to defensible value, allow heat production to vary to match variability in the xenoliths.
@@ -184,7 +179,7 @@ Here we plan to present an integrative perspective on cratonic temperature and c
 \begin{column}{\onecolwid}\vspace{-.6in} % The second column within column 2 (column 2.2)
 
 %----------------------------------------------------------------------------------------
-%	METHODS
+% PERPLEX CALCUOATIONS
 %----------------------------------------------------------------------------------------
 
 \begin{block}{Velocity Profiles from Mineral Physics}
@@ -194,16 +189,17 @@ Here we plan to present an integrative perspective on cratonic temperature and c
 \item We used PerpleX (cite Connolly) to compute densities and seismic velocities for fertile and depleted compositions down to a depth of 350 km.
 
 \begin{figure}
-\includegraphics{img/placeholder.jpg}
-\caption{An example at Colorado Plateau.}
+\includegraphics[width=1.0\textwidth]{img2/ColoradoPlateau_dunite_cardfile.eps} \\
+\includegraphics[width=1.0\textwidth]{img2/SlaveCraton_dunite_cardfile.eps} \\
+\caption{Example material properties for a dunitic composition at the Colorado Plateau (upper) and Slave Craton (lower).}
 \end{figure}
 
-\item Different PerpleX database files give different answers.  We have reason to believe Stixrude (2011) is the most reliable for anhydrous mantle calculations.
+%\item Different PerpleX database files give different answers.  We have reason to believe Stixrude (2011) is the most reliable for anhydrous mantle calculations.
 
-\begin{figure}
-\includegraphics{img/placeholder.jpg}
-\caption{A comparison of databases.}
-\end{figure}
+%\begin{figure}
+%\includegraphics[width=0.3\textwidth]{img2/perplex_databases.eps}
+%\caption{A comparison of databases.}
+%\end{figure}
 
 
 \end{itemize}
@@ -216,22 +212,13 @@ Here we plan to present an integrative perspective on cratonic temperature and c
 
 \end{columns} % End of the split of column 2 - any content after this will now take up 2 columns width
 
-%----------------------------------------------------------------------------------------
-%	IMPORTANT RESULT
-%----------------------------------------------------------------------------------------
-
-%\begin{alertblock}{Cross Validation}
-
-%\end{alertblock} 
-
-%----------------------------------------------------------------------------------------
 
 \begin{columns}[t,totalwidth=\twocolwid] % Split up the two columns wide column again
 
 \begin{column}{\onecolwid} % The first column within column 2 (column 2.1)
 
 %----------------------------------------------------------------------------------------
-%	MATHEMATICAL SECTION
+%	OBSERVATIONS
 %----------------------------------------------------------------------------------------
 
 \begin{alertblock}{Comparison with Observations}
@@ -249,11 +236,10 @@ Here we plan to present an integrative perspective on cratonic temperature and c
 \end{itemize}
 
 \begin{figure}
-\includegraphics{img/placeholder.jpg}
-\caption{Comparisons go here.}
+%\includegraphics[width=0.3\textwidth]{img2/ColoradoPlateau_observations.eps}
+\includegraphics[width=0.8\textwidth]{img2/observations.eps}
+\caption{Rayleigh phase predictions (colored shading) versus observation (red errorbars).}
 \end{figure}
-
-\item The mineral physics predictions disagree with phase velocity observations [Ma and Masters, Cloud and Dalton].
 
 \end{itemize}
 
@@ -266,20 +252,22 @@ Here we plan to present an integrative perspective on cratonic temperature and c
 \begin{column}{\onecolwid} % The second column within column 2 (column 2.2)
 
 %----------------------------------------------------------------------------------------
-%	RESULTS
+%	SS Precursors
 %----------------------------------------------------------------------------------------
 
 \begin{block}{SS Precursors}
 
 \begin{figure}
-\includegraphics{img/placeholder.jpg}
-\caption{Slave Craton Stack.}
+\includegraphics[width=0.8\textwidth]{img3/bin_31.eps} \\
+\includegraphics[width=0.8\textwidth]{img3/bin_49.eps}
+\caption{SS precursor stacks for Colorado Plateau (upper) and Slave Craton (lower), with $1\sigma$ uncertainties.  The maps show individual bouncepoint locations (red dots). }
 \end{figure}
 
-\begin{figure}
-\includegraphics{img/placeholder.jpg}
-\caption{Colorado Plateau Stack.}
-\end{figure}
+\begin{itemize}
+
+\item Traces are migrated through a reference velocity model, stacked in depth relative to peak SS, binned within 10 degree caps
+
+\end{itemize}
 
 
 \end{block}
@@ -297,7 +285,7 @@ Here we plan to present an integrative perspective on cratonic temperature and c
 \begin{column}{\onecolwid} % The third column
 
 %----------------------------------------------------------------------------------------
-%	Applications
+%	Joint Inversions
 %----------------------------------------------------------------------------------------
 
 \begin{block}{Preliminary Joint Inversions}
