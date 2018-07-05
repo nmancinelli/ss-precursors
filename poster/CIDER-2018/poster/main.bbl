@@ -1,0 +1,19 @@
+\begin{thebibliography}{1}
+
+\bibitem{Bostock1999}
+M.G.~Bostock and S.~Rondenay.
+ {Migration of scattered body waves}.
+ {\em Geophys. J. Int.}, 137:732--746, 1999.
+
+\bibitem{Tromp2008}
+J.~Tromp, D.~Komatitsch, and Q.~Liu.
+ {Spectral-element and adjoint methods in seismology}.
+ {\em Communications in Computational Physics}, 3(1):1--32, 2008.
+
+\bibitem{specfem2dsoftware}
+D.~Komatitsch, J.-P. Vilotte, P.~Cristini, J.~Labarta, N.~Le~Goff,
+  P.~Le~Loher, Q.~Liu, R.~Martin, R.~Matzen, C.~Morency, D.~Peter, C.~Tape,
+  J.~Tromp, and Z.~Xie.
+ {SPECFEM2D v7.0.0}, 2012.
+
+\end{thebibliography}
