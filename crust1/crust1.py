@@ -41,3 +41,5 @@ class Crust1:
 if __name__ == "__main__":
     Crust1().get_crustal_model(lat=36, lon=-110).print().save("crustal_model_ColoradoPlateau.pickle")
     Crust1().get_crustal_model(lat=64.5, lon=-110).print().save("crustal_model_SlaveCraton.pickle")
+    Crust1().get_crustal_model(lat=62, lon=96).print().save("crustal_model_Siberia.pickle")
+    Crust1().get_crustal_model(lat=-27, lon=27).print().save("crustal_model_SouthAfrica.pickle")
