@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from numpy import zeros, array
+from numpy import zeros, array, hanning
 plt.style.use('ggplot')
 
 class LayerCakeModel:
@@ -46,8 +46,6 @@ class LayerCakeModel:
             self.rho = frho(self.zs)
             self.vsh = fvsh(self.zs)
 
-
-
     def layerize(self):
         self.h = []
         self.vslay = []
@@ -87,10 +85,10 @@ class LayerCakeModel:
     def compute_layers_from_model_parameters(self,dm):
         for ilay in range(len(self.vslay)):
             pert_pct = dm[ilay]
-            if ilay == 0:
+            if ilay == None:
                 pass
             else:
-                self.vslay[ilay:] = self.vslay[ilay:] * (1.+pert_pct)
+                self.vslay[ilay] = self.vslay[ilay] * (1.+pert_pct)
 
         return self
 
@@ -208,7 +206,7 @@ class FrechetDerivatives:
             lcm.vslay = lcm0.vslay.copy()
             lcm.vslay[iz:] = array(lcm0.vslay[iz:]) * (1. + 0.01)
             sss = SSsyn(lcm).construct_spike_train().convolve_with_wavelet().normalize().interpolate_to_time_points(time_points)
-            damp = sss.seis - sss0.seis
+            damp = +sss.seis - sss0.seis
 
             #if iz == 150:
                 #plt.figure(999)
@@ -219,7 +217,7 @@ class FrechetDerivatives:
                 #plt.show()
 
             if lcm.ztop[iz] > 0:
-                FD[:,iz] = damp
+                FD[:,iz] = damp #* hanning(len(damp))
 
         self.FD = FD
 
@@ -237,7 +235,7 @@ def make_example_trace():
     from minos.minos import Minos
 
     path = '/Users/mancinelli/Desktop/SS_Precursors/'
-    starting_model = 'minos.min.anelas.dunite.SlaveCraton.pickle'
+    starting_model = 'minos.min.anelas.dunite.ColoradoPlateau.pickle'
 
     # Load cardfile and construct layer_cake_model
     #
@@ -247,7 +245,9 @@ def make_example_trace():
     df.Vsh = df.Vsh / 1000.
     df.Density = df.Density / 1000.
 
-    df.Vsh[(df.Z > 130)] = df.Vsh[(df.Z > 130)] * 0.93
+    df.Vsh[(df.Z > 160)] = df.Vsh[(df.Z > 160)] * 0.96
+
+    df.Vsh[(df.Z > 180)] = df.Vsh[(df.Z > 180)] * 1.04
 
     lcm = LayerCakeModel(df.Z.tolist(), df.Vsh.tolist(), df.Density.tolist()).layerize()
     sss = SSsyn(lcm).construct_spike_train().convolve_with_wavelet().normalize()

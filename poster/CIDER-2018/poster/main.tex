@@ -24,7 +24,7 @@
 
 \documentclass[final]{beamer}
 
-\usepackage[scale=1.10]{beamerposter} % Use the beamerposter package for laying out the poster
+\usepackage[scale=1.05]{beamerposter} % Use the beamerposter package for laying out the poster
 
 \usetheme{confposter} % Use the confposter theme supplied with this template
 
@@ -56,8 +56,6 @@
 %-----------------------------------------------------------
 
 %My commands
-\newcommand{\vp}{v_p}
-\newcommand{\vs}{v_s}
 
 \usepackage{amsmath}
 
@@ -100,9 +98,19 @@
 
 \begin{alertblock}{Key Points}
 \begin{itemize}
-\item Key point A
-\item Key point B
-\item Key point C
+\item We use constraints from xenoliths, heat-flow, and mineral physics to estimate the seismic velocity structure of the Slave Craton and the Colorado Plateau.
+
+\item The predictions generally yield Rayleigh phase velocities that \emph{disagree} with those observed, demonstrating a problem with our understanding of cratonic mantle temperature and composition.
+
+\begin{itemize}
+
+\item \emph{Colorado Plateau}. The presence of a low velocity layer in the uppermost mantle is supported by Rayleigh phase velocities and past receiver function studies, but SS precursors place the low velocity layer somewhat deeper.
+
+\item \emph{Slave Craton}. The observed phase velocities are slightly faster than the predictions, but SS precursors place a velocity drop at a depth of $125\pm10$km.  These constraints may be reconciled if the uppermost mantle is anomalously fast or if the true geotherm is cooler than suggested by xenoliths.
+
+\end{itemize}
+
+\item Joint inversions hold promise in reconciling constraints, and will allow us to explore the compositions required to satisfy the observations.
 
 \end{itemize}
 \end{alertblock}
@@ -113,19 +121,19 @@
 
 \begin{block}{Geological Motivation}
 
-Much of Earth's cratonic lithosphere has resisted deformation throughout geologic time.  Cooler-than-average temperatures make cratonic lithosphere strong and thick, and its depleted composition provides a buoyancy force which resists entrainment in deeper mantle flow.
-
 \begin{itemize}
+
+\item Much of Earth's cratonic lithosphere has resisted deformation throughout geologic time.  Cooler-than-average temperatures make cratonic lithosphere strong and thick, and its depleted composition provides a buoyancy force which resists entrainment in deeper mantle flow.
 
 \item Surface-wave dispersion measurements place constraints on the absolute velocities of the cratonic mantle lithosphere, but it is difficult to reconcile these geophysical observations with the steady-state geotherms inferred from mantle xenoliths if a simple peridotite composition is assumed.
  
-\item Xenolith-derived geotherms predict shear velocities that are higher than observed in the shallow mantle lithosphere and slower than observed in the deeper cratonic lithosphere.  One possible explanation is that a low-velocity layer pervades the shallow cratonic lithosphere, potentially a relict of metasomatic activity.
+%\item Xenolith-derived geotherms predict shear velocities that are higher than observed in the shallow mantle lithosphere and slower than observed in the deeper cratonic lithosphere.  One possible explanation is that a low-velocity layer pervades the shallow cratonic lithosphere, potentially a relict of metasomatic activity.
 
 \item Scattered body-waves have suggested the presence of a negative velocity discontinuity at depths ranging from 90 to 140 km; these have been interpreted as the top of such a low-velocity zone.  At greater depths, converted waves occasionally reveal a velocity increase at a depth of $220\pm20$ km, the so-called Lehmann discontinuity, which is detected more often beneath continents than beneath oceans.
 
-\end{itemize}
+\item Here we combine perspectives on cratonic temperature and composition by jointly analyzing surface wave observations and underside reflected waves (SS precursors) at the Slave Craton and the Colorado Plateau.  Ultimately, we will wish to use constraints from surface-wave attenuation and receiver functions as well.  In the future, we plan to extend this analysis to other cratons with available constraints from both xenoliths and seismology, including the Kalahari and Siberian Cratons.
 
-Here we plan to present an integrative perspective on cratonic temperature and composition by jointly analyzing surface wave observations (both shear velocity and attenuation), receiver functions (both Ps and Sp), and underside reflected waves (SS precursors) across the North American continent.
+\end{itemize}
 
 \end{block}
 
@@ -156,17 +164,15 @@ Here we plan to present an integrative perspective on cratonic temperature and c
 
 \begin{itemize}
 
-\item Pressure--temperature constraints from xenoliths (cite CT Lee) and heat-flow modeling (cite Rudnick) to constrain a mantle geotherm.
-
-\item Discuss assumptions
+\item Pressure--temperature constraints from xenoliths \cite{Lee2011} and heat-flow modeling \cite{Rudnick1998} to constrain a mantle geotherm, assuming a mantle potential temperature of 1350$^\circ$ C.
 
 \begin{figure}
 \includegraphics[width=0.5\textwidth]{img2/ColoradoPlateau_geotherm.eps}
 \includegraphics[width=0.5\textwidth]{img2/SlaveCraton_geotherm.eps}
-\caption{Constraints on geotherms from xenolith thermobarometry.}
+\caption{Constraints on geotherms from xenolith thermobarometry at the Colorado Plateau (left) and the Slave Craton (right).  The warm--cool range represents 95\% of the variability in the optimal solution from bootstrap resampling the xenolith population.}
 \end{figure}
 
-\item Strong tradeoff between crustal heat production and surface heat-flow.  Solved by pegging heat-flow to defensible value, allow heat production to vary to match variability in the xenoliths.
+\item Tradeoff between crustal heat production and surface heat-flow addressed by pegging heat-flow to defensible value, allowing heat production to vary to match variability in the xenoliths.
 
 \end{itemize}
 
@@ -186,7 +192,7 @@ Here we plan to present an integrative perspective on cratonic temperature and c
 
 \begin{itemize}
 
-\item We used PerpleX (cite Connolly) to compute densities and seismic velocities for fertile and depleted compositions down to a depth of 350 km.
+\item We used PerpleX \cite{Connolly1990} to compute densities and seismic velocities for fertile and depleted compositions down to a depth of 350 km, with an anhydrous mantle minerals database \cite{Stixrude2011}.
 
 \begin{figure}
 \includegraphics[width=1.0\textwidth]{img2/ColoradoPlateau_dunite_cardfile.eps} \\
@@ -200,7 +206,6 @@ Here we plan to present an integrative perspective on cratonic temperature and c
 %\includegraphics[width=0.3\textwidth]{img2/perplex_databases.eps}
 %\caption{A comparison of databases.}
 %\end{figure}
-
 
 \end{itemize}
 
@@ -223,23 +228,26 @@ Here we plan to present an integrative perspective on cratonic temperature and c
 
 \begin{alertblock}{Comparison with Observations}
 
+\begin{figure}
+%\includegraphics[width=0.3\textwidth]{img2/ColoradoPlateau_observations.eps}
+\includegraphics[width=0.95\textwidth]{img2/observations.eps}
+\caption{Rayleigh phase predictions (colored shading) versus observations (red errorbars) \cite{Pasyanos2014, Babikoff2018}.}
+\end{figure}
+
 \begin{itemize}
 
-\item We use mineos to estimate phase velocities assuming
+\item We used Mineos to estimate phase velocities from the following assumptions:
 
 \begin{itemize}
 
 \item $V_{p}$, $V_{s}$ $\rightarrow$ $V_{pv}$, $V_{ph}$, $V_{sv}$, and $V_{sh}$ using the Voigt average and by taking scalings from the radially anisotropic reference model STW105.
-\item crustal structure from Crust1.0 (Slave) or Shen and Ritzwoller (Colo. Plateau)
-\item $Q_\mu$ from the geotherm predicted using Faul and Jackson (XXXX)
+
+\item Crustal structure taken from Crust1.0 (Slave) or Shen \emph{et al.} (Colo. Plateau) \cite{Pasyanos2014, Shen2013}.
+
+\item $Q_\mu$ from the geotherm predicted using experimental data \cite{Faul2002}.
 
 \end{itemize}
 
-\begin{figure}
-%\includegraphics[width=0.3\textwidth]{img2/ColoradoPlateau_observations.eps}
-\includegraphics[width=0.8\textwidth]{img2/observations.eps}
-\caption{Rayleigh phase predictions (colored shading) versus observation (red errorbars).}
-\end{figure}
 
 \end{itemize}
 
@@ -260,15 +268,10 @@ Here we plan to present an integrative perspective on cratonic temperature and c
 \begin{figure}
 \includegraphics[width=0.8\textwidth]{img3/bin_31.eps} \\
 \includegraphics[width=0.8\textwidth]{img3/bin_49.eps}
-\caption{SS precursor stacks for Colorado Plateau (upper) and Slave Craton (lower), with $1\sigma$ uncertainties.  The maps show individual bouncepoint locations (red dots). }
+\caption{SS precursor stacks for Colorado Plateau (upper) and Slave Craton (lower), with $1\sigma$ uncertainties.  The maps show individual bouncepoint locations (red dots).  We follow a stacking approach following Schmerr \cite{Schmerr2012}.
+Consistent phases among the mean and median stacks suggest the presence of sharp horizontal boundaries within the cratonic mantle lithosphere.
+}
 \end{figure}
-
-\begin{itemize}
-
-\item Traces are migrated through a reference velocity model, stacked in depth relative to peak SS, binned within 10 degree caps
-
-\end{itemize}
-
 
 \end{block}
 
@@ -292,7 +295,7 @@ Here we plan to present an integrative perspective on cratonic temperature and c
 
 \begin{itemize}
 
-\item We use an iterative, linearized inversion technique to estimate a layer-cake model of shear velocities using constraints from (1) the stacked SS waveform and (2) from Rayleigh phase velocity observations.  Additional constraints:
+\item We used an iterative, linearized inversion technique to estimate a layer-cake model of shear velocities using constraints from (1) the stacked SS waveform and (2) from Rayleigh phase velocity observations.  Additional constraints:
 
 	\begin{itemize}
 
@@ -301,20 +304,14 @@ Here we plan to present an integrative perspective on cratonic temperature and c
 
 	\end{itemize}
 
-\item We have found it difficult to fit the large oscillations near SS, so these examples use synthetic SS precursor waveforms that approximate the phases observed in the stacks.
+\item At present, it is difficult to fit the large oscillations near SS, so these examples use synthetic SS precursor waveforms approximating certain phases observed in the stacks.
 
 \end{itemize}
 
 \begin{figure}
-\includegraphics{img/placeholder.jpg}
-\caption{Colorado Plateau Stack.}
+\includegraphics[width=\textwidth]{img4/jtinv_coloplat.eps}
+\caption{Joint inversion at the Colorado Plateau.}
 \end{figure}
-
-\begin{figure}
-\includegraphics{img/placeholder.jpg}
-\caption{Colorado Plateau Stack.}
-\end{figure}
-
 
 \end{block}
 
@@ -325,9 +322,9 @@ Here we plan to present an integrative perspective on cratonic temperature and c
 \begin{block}{References}
 
 
-\nocite{*} % Insert publications even if they are not cited in the poster
+%\nocite{*} % Insert publications even if they are not cited in the poster
 \tiny{\bibliographystyle{unsrt}
-\bibliography{sample}\vspace{0.75in}}
+\bibliography{library}\vspace{0.75in}}
 
 \end{block}
 
@@ -337,14 +334,14 @@ Here we plan to present an integrative perspective on cratonic temperature and c
 
 %\setbeamercolor{block title}{fg=red,bg=white} % Change the block title color
 
-\begin{block}{Acknowledgements}
+%\begin{block}{Acknowledgements}
+%
+%\tiny{\rmfamily{For providing access and support for SPECFEM2D, we thank the Computational Infrastructure for Geodynamics (http://geodynamics.org) which is funded by the National Science Foundation under awards EAR-0949446 and EAR-1550901. This research was conducted using computational resources and services at the Center for Computation and Visualization, Brown University.
+%Funding for this research was provided by the NSF EarthScope Program  under award EAR-1614066.}} \\
 
-\tiny{\rmfamily{For providing access and support for SPECFEM2D, we thank the Computational Infrastructure for Geodynamics (http://geodynamics.org) which is funded by the National Science Foundation under awards EAR-0949446 and EAR-1550901. This research was conducted using computational resources and services at the Center for Computation and Visualization, Brown University.
-Funding for this research was provided by the NSF EarthScope Program  under award EAR-1614066.}} \\
+%\end{block}
 
-\end{block}
-
-\footnotetext{For full manuscript, contact nicholas\_mancinelli@brown.edu.}
+%\footnotetext{All codes and data can be accessed publicly in the GitHub repository.  Follow me at \emph{nmancinelli}.}
 
 %----------------------------------------------------------------------------------------
 %	CONTACT INFORMATION

@@ -2,45 +2,47 @@ This is BibTeX, Version 0.99d (TeX Live 2015)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: unsrt.bst
-Database file #1: sample.bib
-You've used 3 entries,
+Database file #1: library.bib
+Warning--there's a number but no volume in Pasyanos2014
+You've used 9 entries,
             1791 wiz_defined-function locations,
-            464 strings with 4051 characters,
-and the built_in function-call counts, 773 in all, are:
-= -- 54
-> -- 63
+            515 strings with 5076 characters,
+and the built_in function-call counts, 2144 in all, are:
+= -- 206
+> -- 79
 < -- 0
-+ -- 22
-- -- 19
-* -- 65
-:= -- 139
-add.period$ -- 8
-call.type$ -- 3
-change.case$ -- 3
++ -- 30
+- -- 21
+* -- 168
+:= -- 345
+add.period$ -- 27
+call.type$ -- 9
+change.case$ -- 9
 chr.to.int$ -- 0
-cite$ -- 3
-duplicate$ -- 23
-empty$ -- 63
-format.name$ -- 19
-if$ -- 156
+cite$ -- 10
+duplicate$ -- 80
+empty$ -- 209
+format.name$ -- 21
+if$ -- 457
 int.to.chr$ -- 0
-int.to.str$ -- 3
-missing$ -- 2
-newline$ -- 17
-num.names$ -- 3
-pop$ -- 9
+int.to.str$ -- 9
+missing$ -- 9
+newline$ -- 48
+num.names$ -- 9
+pop$ -- 12
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 11
+skip$ -- 28
 stack$ -- 0
-substring$ -- 41
-swap$ -- 3
+substring$ -- 212
+swap$ -- 9
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 7
-width$ -- 4
-write$ -- 32
+warning$ -- 1
+while$ -- 25
+width$ -- 10
+write$ -- 100
+(There was 1 warning)

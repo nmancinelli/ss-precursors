@@ -1,19 +1,54 @@
 \begin{thebibliography}{1}
 
-\bibitem{Bostock1999}
-M.G.~Bostock and S.~Rondenay.
- {Migration of scattered body waves}.
- {\em Geophys. J. Int.}, 137:732--746, 1999.
+\bibitem{Lee2011}
+Cin-Ty~A. Lee, Peter Luffi, and Emily~J. Chin.
+\newblock {Building and destroying continental mantle}.
+\newblock {\em Annu. Rev. Earth Planet. Sci.}, 39(1):59--90, 2011.
 
-\bibitem{Tromp2008}
-J.~Tromp, D.~Komatitsch, and Q.~Liu.
- {Spectral-element and adjoint methods in seismology}.
- {\em Communications in Computational Physics}, 3(1):1--32, 2008.
+\bibitem{Rudnick1998}
+Roberta~L. Rudnick, William~F. McDonough, and Richard~J. O'Connell.
+\newblock {Thermal structure, thickness and composition of continental
+  lithosphere}.
+\newblock {\em Chem. Geol.}, 145(3-4):395--411, 1998.
 
-\bibitem{specfem2dsoftware}
-D.~Komatitsch, J.-P. Vilotte, P.~Cristini, J.~Labarta, N.~Le~Goff,
-  P.~Le~Loher, Q.~Liu, R.~Martin, R.~Matzen, C.~Morency, D.~Peter, C.~Tape,
-  J.~Tromp, and Z.~Xie.
- {SPECFEM2D v7.0.0}, 2012.
+\bibitem{Connolly1990}
+J~A~D Connolly.
+\newblock {Multivariable phase-diagrams: an algorithm based on generalized
+  thermodynamics}.
+\newblock {\em Am. J. Sci.}, 290:666--718, 1990.
+
+\bibitem{Stixrude2011}
+Lars Stixrude and Carolina Lithgow-Bertelloni.
+\newblock {Thermodynamics of mantle minerals - II. Phase equilibria}.
+\newblock {\em Geophys. J. Int.}, 184(3):1180--1213, 2011.
+
+\bibitem{Pasyanos2014}
+Michael~E. Pasyanos, T.~Guy Masters, Gabi Laske, and Zhitu Ma.
+\newblock {LITHO1.0: An updated crust and lithospheric model of the Earth}.
+\newblock {\em J. Geophys. Res. Solid Earth}, (119):2153--2173, 2014.
+
+\bibitem{Babikoff2018}
+Jordyn~C. Babikoff and Colleen~A. Dalton.
+\newblock {Long period Rayleigh wave phase velocity tomography using USArray}.
+\newblock {\em In Prep.}, 2018.
+
+\bibitem{Shen2013}
+Weisen Shen, Michael~H. Ritzwoller, and Vera Schulte-Pelkum.
+\newblock {A 3-D model of the crust and uppermost mantle beneath the Central
+  and Western US by joint inversion of receiver functions and surface wave
+  dispersion}.
+\newblock {\em J. Geophys. Res. Solid Earth}, 118(1):262--276, 2013.
+
+\bibitem{Faul2002}
+Ulrich~H. Faul and Ian Jackson.
+\newblock {The seismological signature of temperature and grain size variations
+  in the upper mantle}.
+\newblock {\em Earth Planet. Sci. Lett.}, 234:119--134, 2005.
+
+\bibitem{Schmerr2012}
+Nicholas Schmerr.
+\newblock {The Gutenberg discontinuity: Melt at the lithosphere--asthenosphere
+  boundary}.
+\newblock {\em Science}, 335(6075):1480--1483, 2012.
 
 \end{thebibliography}

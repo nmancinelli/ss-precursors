@@ -38,7 +38,6 @@ def _read_derivative_file_and_interpolate(period):
 
 class FrechetDerivatives:
     def __init__(self, periods=None, zs=None, hs=None):
-        from numpy import sum
 
         if zs == None:
             zs = arange(0,410,1)
@@ -64,10 +63,10 @@ class FrechetDerivatives:
         for iz, h in enumerate(hs):
             assert(h>0.0)
 
-            FDvsv[:,iz] =  sum(h*FDvsv[:,iz:],axis=1)
-            FDvsh[:,iz] =  sum(h*FDvsh[:,iz:],axis=1)
-            FDvpv[:,iz] =  sum(h*FDvpv[:,iz:],axis=1)
-            FDvph[:,iz] =  sum(h*FDvph[:,iz:],axis=1)
+            FDvsv[:,iz] =  (h*FDvsv[:,iz])
+            FDvsh[:,iz] =  (h*FDvsh[:,iz])
+            FDvpv[:,iz] =  (h*FDvpv[:,iz])
+            FDvph[:,iz] =  (h*FDvph[:,iz])
 
             if zs[iz] < 0:
                 FDvsv[:, iz] *= 0.
