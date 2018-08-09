@@ -2,6 +2,8 @@
 #
 import pandas as pd
 from numpy import mean, std
+from subprocess import call
+from os import chdir
 
 path = '/Users/mancinelli/Desktop/SS_Precursors/observations/'
 
@@ -14,8 +16,11 @@ class PhaseVelocities:
 
         if source == 'Cloud':
             self = self.get_velocities_cloud()
-        else:
+        elif source == 'Ma':
             self = self.get_velocities_ma()
+        else:
+            self = self.get_velocities_ekstrom()
+
 
     def get_velocities_cloud(self):
 
@@ -40,9 +45,6 @@ class PhaseVelocities:
         return self
 
     def get_velocities_ma(self):
-        from subprocess import call
-        from os import chdir
-
         import os
         cwd = os.getcwd()
 
@@ -54,7 +56,29 @@ class PhaseVelocities:
 
         df["Period"] = (df.freq_mHz / 1000.)**-1
 
-        df = df.query("Period >=40 and Period < 190")
+        df = df.query("Period >=20 and Period < 190")
+
+        for _, row in df.iterrows():
+            if row.v1 < 0.0:
+                continue
+            self.measurements[row.Period] = row.v1*1000.
+
+        return self
+
+    def get_velocities_ekstrom(self):
+        import os
+        cwd = os.getcwd()
+
+        chdir('%s/ekstrom/GDM52_program' % path)
+        call('bash get_dispersion.bash %f %f' % (self.lat, self.lon), shell=True)
+
+        df = pd.read_csv('GDM52_dispersion.out', names = ['freq_mHz','dum','v1','dum','dum','dum','dum'], delim_whitespace=True, skiprows=5)
+
+        chdir('%s' % cwd)
+
+        df["Period"] = (df.freq_mHz / 1000.)**-1
+
+        df = df.query("Period >=20 and Period < 190")
 
         for _, row in df.iterrows():
             if row.v1 < 0.0:
