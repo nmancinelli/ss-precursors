@@ -45,3 +45,5 @@ minos/*.out
 minos/*.txt
 /observations/ma/rayleigh/point.1
 /inversion/splines/
+/s362ani/tmp
+/s362ani/tmp2

@@ -160,6 +160,7 @@ class CardFile:
             self.df.Vsh[ii] *= (1.+tmp.dlnvsh/100.)
             self.df.Vsv[ii] *= (1.+tmp.dlnvsv/100.)
 
+
         chdir(curdir)
         print('done.')
 
@@ -259,7 +260,7 @@ class CardFile:
 
         return self
 
-    def set_mantle_region(self, vp_fun, vs_fun, rho_fun, zmax=350, zmoho=35.):
+    def set_mantle_region(self, vp_fun, vs_fun, rho_fun, zmax=350, zmoho=35., force_isotropy=False):
         for ii,row in self.df.iterrows():
             z = (max(self.df.Radius) - row["Radius"]) / 1000.0
 
@@ -275,7 +276,7 @@ class CardFile:
             svh_ratio = row["Svh_Ratio"]
             eta       = row["Eta"]
 
-            if z <= zmoho:
+            if z <= zmoho or force_isotropy:
                 pvh_ratio = 1.
                 svh_ratio = 1.
                 eta = 1.
