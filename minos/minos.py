@@ -4,9 +4,11 @@ from numpy import sqrt
 import subprocess
 from os import chdir, getcwd
 import pickle as pickle
+import pandas as pd
+from subprocess import call
 
 workingdir = '/Users/mancinelli/Desktop/SS_Precursors/minos'
-
+modeldir = '/Users/mancinelli/Desktop/SS_Precursors/s362ani'
 
 VpVsRatioDefault=sqrt(3)
 
@@ -129,7 +131,6 @@ class CardFile:
         pass
 
     def read(self, filename="STW105.txt"):
-        import pandas as pd
         df=pd.read_csv(filename, skiprows=3, delim_whitespace=True,
                        names=['Radius','Density','Vpv','Vsv','Qkappa','Qmu','Vph','Vsh','Eta'])
         self.df = df
@@ -137,6 +138,35 @@ class CardFile:
         self.__calculate_anisotropic_scaling()
 
         return self
+
+    def regional_profile_from_kustow(self, lat=0, lon=0):
+        print('Pulling regional profile...')
+        curdir = getcwd()
+        chdir(modeldir)
+
+        names = ['dlnvsh','dlnvsv','dlnvph','dlnvpv','dlneta','dlnrho']  #vshout,vsvout,vphout,vpvout,etaout,rhoout
+        for ii,row in self.df.iterrows():
+            depth_in_km = (max(self.df.Radius) - row["Radius"]) / 1000.0
+
+            if depth_in_km > 3000:
+                continue
+
+            call('bash get_model_values.bash %f %f %d' % (lat, lon, depth_in_km), shell=True)
+
+            tmp = pd.read_csv('tmp2', delim_whitespace=True, names = names)
+
+            self.df.Vpv[ii] *= (1.+tmp.dlnvpv/100.)
+            self.df.Vph[ii] *= (1.+tmp.dlnvph/100.)
+            self.df.Vsh[ii] *= (1.+tmp.dlnvsh/100.)
+            self.df.Vsv[ii] *= (1.+tmp.dlnvsv/100.)
+
+        chdir(curdir)
+        print('done.')
+
+        self.__calculate_anisotropic_scaling()
+
+        return self
+
 
     def __calculate_anisotropic_scaling(self):
         self.df["Pvh_Ratio"] = self.df.Vpv / self.df.Vph
@@ -231,13 +261,12 @@ class CardFile:
 
     def set_mantle_region(self, vp_fun, vs_fun, rho_fun, zmax=350, zmoho=35.):
         for ii,row in self.df.iterrows():
-            z = 6371. - row["Radius"]/1000.0
+            z = (max(self.df.Radius) - row["Radius"]) / 1000.0
 
             if z > zmax:
                 continue
 
             vp, vs, rho = vp_fun(z), vs_fun(z), rho_fun(z)
-
 
             shear_modulus    = vs**2 * rho
             bulk_modulus     = vp**2 * rho - 4./3. * shear_modulus
